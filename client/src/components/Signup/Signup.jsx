@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -9,6 +9,7 @@ import SelectRole from "./Step1/SelectRole";
 import SignupForm from "./Step2/SignupForm";
 import { colorScheme } from "../../constants/colorScheme";
 import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const steps = ["Select Role", "Fill Details"];
 const stepStyle = {
@@ -24,7 +25,7 @@ const stepStyle = {
   },
 };
 
-export default function Signup() {
+export default function Signup({ urlRole }) {
   //data
   const [signupRole, setSignupRole] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -60,6 +61,16 @@ export default function Signup() {
   //   userOrg
   // );
 
+  //utilites
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (urlRole) {
+      setSignupRole(urlRole);
+      setActiveStep(1);
+    }
+  }, [urlRole]);
+
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
@@ -72,14 +83,17 @@ export default function Signup() {
   };
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
+    if (activeStep === 0 && signupRole === "") {
+      alert("Please Select Role");
+    } else {
+      let newSkipped = skipped;
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values());
+        newSkipped.delete(activeStep);
+      }
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
     }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
   };
 
   const handleBack = () => {
@@ -124,6 +138,7 @@ export default function Signup() {
     setDistrict("");
     setPinCode("");
     setAddress("");
+    navigate("/signup");
   };
 
   return (
@@ -152,7 +167,6 @@ export default function Signup() {
           );
         })}
       </Stepper>
-
       {/* all steps completed component */}
       {activeStep === steps.length ? (
         <React.Fragment>
@@ -169,6 +183,7 @@ export default function Signup() {
           {/* Each step body content here */}
           {activeStep === 0 ? (
             // step 1
+
             <SelectRole role={signupRole} setRole={setSignupRole} />
           ) : activeStep === 1 ? (
             // step 2
@@ -224,9 +239,13 @@ export default function Signup() {
               sx={{
                 height: "1.6rem",
                 fontSize: "0.8rem",
-                borderColor: colorScheme.tertiaryBlue,
+                borderColor: colorScheme.primaryOrange,
                 mr: 1,
                 mb: "1rem",
+                color: colorScheme.primaryOrange,
+                "&:hover": {
+                  borderColor: colorScheme.primaryOrange,
+                },
               }}
               variant="outlined"
             >
@@ -251,8 +270,14 @@ export default function Signup() {
                 sx={{
                   height: "1.6rem",
                   fontSize: "0.8rem",
-                  borderColor: colorScheme.tertiaryBlue,
+                  backgroundColor: colorScheme.primaryOrangeLight,
+                  borderColor: colorScheme.primaryOrange,
+                  color: colorScheme.primaryOrange,
                   mr: "1rem",
+                  "&:hover": {
+                    borderColor: colorScheme.primaryOrange,
+                    backgroundColor: colorScheme.primaryOrangeLight,
+                  },
                 }}
                 onClick={handleReset}
               >

@@ -14,7 +14,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: <Signup />,
+        element: <Signup urlRole={null} />,
+      },
+      {
+        path: "/signup/organization?",
+        element: <Signup urlRole={"Organization"} />,
+      },
+      {
+        path: "/signup/school?",
+        element: <Signup urlRole={"School"} />,
+      },
+      {
+        path: "/signup/user?",
+        element: <Signup urlRole={"User"} />,
+      },
+      {
+        path: "/signup/training-team?",
+        element: <Signup urlRole={"Training Team"} />,
       },
     ],
   },

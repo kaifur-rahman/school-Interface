@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import RoleCard from "./RoleCard";
@@ -8,22 +8,22 @@ import { colorScheme } from "../../../constants/colorScheme";
 function SelectRole({ role, setRole }) {
   const dummyData = [
     {
-      rolteTitle: "Organization",
+      roleTitle: "Organization",
       roleDescription:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      rolteTitle: "School",
+      roleTitle: "School",
       roleDescription:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      rolteTitle: "User",
+      roleTitle: "User",
       roleDescription:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      rolteTitle: "Training Team",
+      roleTitle: "Training Team",
       roleDescription:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
@@ -39,8 +39,29 @@ function SelectRole({ role, setRole }) {
       ? 3
       : null
   );
+
+  useEffect(() => {
+    if (role != null) {
+      let index;
+      if (role === "Organization") {
+        index = 0;
+      } else if (role === "School") {
+        index = 1;
+      } else if (role === "User") {
+        index = 2;
+      } else if (role === "Training Team") {
+        index = 3;
+      } else {
+        index = null;
+      }
+      if (index != null) {
+        handleRoleSelect(index);
+      }
+    }
+  }, [role]);
+
   function handleRoleSelect(index) {
-    setRole(dummyData[index].rolteTitle);
+    setRole(dummyData[index].roleTitle);
     setBorderSelected(index);
   }
   return (
@@ -54,7 +75,7 @@ function SelectRole({ role, setRole }) {
           {dummyData.map((data, index) => (
             <Grid
               item
-              key={data.rolteTitle}
+              key={data.roleTitle}
               xs={12}
               sm={12}
               md={6}
@@ -106,7 +127,7 @@ function SelectRole({ role, setRole }) {
               >
                 <Box sx={{ p: "1.5rem" }}>
                   <RoleCard
-                    title={data.rolteTitle}
+                    title={data.roleTitle}
                     description={data.roleDescription}
                   />
                 </Box>
