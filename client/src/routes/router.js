@@ -17,19 +17,19 @@ const router = createBrowserRouter([
         element: <Signup urlRole={null} />,
       },
       {
-        path: "/signup/organization?",
+        path: "/signup/organization",
         element: <Signup urlRole={"Organization"} />,
       },
       {
-        path: "/signup/school?",
+        path: "/signup/school",
         element: <Signup urlRole={"School"} />,
       },
       {
-        path: "/signup/user?",
+        path: "/signup/user",
         element: <Signup urlRole={"User"} />,
       },
       {
-        path: "/signup/training-team?",
+        path: "/signup/training-team",
         element: <Signup urlRole={"Training Team"} />,
       },
     ],
