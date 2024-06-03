@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import RoleCard from "./RoleCard";
 import { ButtonBase } from "@mui/material";
 import { colorScheme } from "../../../constants/colorScheme";
+import { useNavigate } from "react-router-dom";
 
 function SelectRole({ role, setRole }) {
   const dummyData = [
@@ -39,7 +40,7 @@ function SelectRole({ role, setRole }) {
       ? 3
       : null
   );
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (role != null) {
       let index;
@@ -61,8 +62,13 @@ function SelectRole({ role, setRole }) {
   }, [role]);
 
   function handleRoleSelect(index) {
-    setRole(dummyData[index].roleTitle);
-    setBorderSelected(index);
+    const role = dummyData[index].roleTitle;
+
+    if (role === "Training Team") {
+      navigate("/signup/training-team");
+    } else {
+      navigate("/signup/" + role);
+    }
   }
   return (
     <>
@@ -83,6 +89,7 @@ function SelectRole({ role, setRole }) {
                 borderStyle: "solid",
                 borderColor: "#E3E3E3",
                 borderWidth: "0.02rem",
+                boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.5)",
                 borderRightWidth: {
                   md: index % 2 === 0 ? "0" : "0.02rem",
                   lg: index % 2 === 0 ? "0" : "0.02rem",
@@ -109,6 +116,13 @@ function SelectRole({ role, setRole }) {
                   sm: index === dummyData.length - 1 ? "0.4rem" : 0,
                   md: index === dummyData.length - 2 ? "0.4rem" : 0,
                 },
+                transition: "box-shadow 0.3s ease, transform 0.3s ease",
+                "&:hover": {
+                  transform: index === borderSelected ? null : "scale(1.01)",
+                  borderColor:
+                    index === borderSelected ? null : colorScheme.primaryOrange,
+                  borderWidth: index === borderSelected ? null : "0.1rem",
+                },
               }}
             >
               <ButtonBase
@@ -116,7 +130,7 @@ function SelectRole({ role, setRole }) {
                 sx={{
                   borderStyle: index === borderSelected ? "solid" : "none",
                   borderColor: colorScheme.primaryOrange,
-                  borderWidth: "0.02rem",
+                  borderWidth: "0.1rem",
                   borderTopLeftRadius: index === 0 ? "0.4rem" : 0,
                   borderTopRightRadius: index === 1 ? "0.4rem" : 0,
                   borderBottomRightRadius:
