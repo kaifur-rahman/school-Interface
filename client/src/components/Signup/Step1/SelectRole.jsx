@@ -67,7 +67,7 @@ function SelectRole({ role, setRole }) {
     if (role === "Training Team") {
       navigate("/signup/training-team");
     } else {
-      navigate("/signup/" + role);
+      navigate("/signup/" + role.toLowerCase());
     }
   }
   return (
