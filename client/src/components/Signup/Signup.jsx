@@ -9,13 +9,13 @@ import SelectRole from "./Step1/SelectRole";
 import SignupForm from "./Step2/SignupForm";
 import { colorScheme } from "../../constants/colorScheme";
 import { Container } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const steps = ["Select Role", "Fill Details"];
 const stepStyle = {
   "& .Mui-active": {
     "& .MuiSvgIcon-root": {
-      color: colorScheme.tertiaryBlue,
+      color: colorScheme.secondaryGrey,
     },
   },
   "& .Mui-completed": {
@@ -142,7 +142,7 @@ export default function Signup({ urlRole }) {
   };
 
   return (
-    <Container sx={{ width: "100%", pt: "1rem" }}>
+    <Container sx={{ width: "100vw", pt: "1rem" }}>
       {/* stepper icon and label */}
       <Stepper activeStep={activeStep} alternativeLabel sx={stepStyle}>
         {steps.map((label, index) => {
@@ -175,7 +175,9 @@ export default function Signup({ urlRole }) {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
             <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleReset}>Login</Button>
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              Login
+            </Link>
           </Box>
         </React.Fragment>
       ) : (
@@ -242,6 +244,7 @@ export default function Signup({ urlRole }) {
                 borderColor: colorScheme.primaryOrange,
                 mr: 1,
                 mb: "1rem",
+                mt: "1rem",
                 color: colorScheme.primaryOrange,
                 "&:hover": {
                   borderColor: colorScheme.primaryOrange,
@@ -270,6 +273,7 @@ export default function Signup({ urlRole }) {
                 sx={{
                   height: "1.6rem",
                   fontSize: "0.8rem",
+                  mt: "1rem",
                   backgroundColor: colorScheme.primaryOrangeLight,
                   borderColor: colorScheme.primaryOrange,
                   color: colorScheme.primaryOrange,
@@ -291,7 +295,9 @@ export default function Signup({ urlRole }) {
               sx={{
                 height: "1.6rem",
                 fontSize: "0.8rem",
-                backgroundColor: colorScheme.tertiaryBlue,
+                mt: "1rem",
+                backgroundColor: colorScheme.primaryOrange,
+                "&:hover": { backgroundColor: colorScheme.primaryOrange },
               }}
               onClick={handleNext}
             >

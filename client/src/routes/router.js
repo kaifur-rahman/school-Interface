@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Template from "../pages/Template";
 import Home from "../components/Homepage/Home";
 import Signup from "../components/Signup/Signup";
+import Login from "../components/Login/Login";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/signup/training-team",
         element: <Signup urlRole={"Training Team"} />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

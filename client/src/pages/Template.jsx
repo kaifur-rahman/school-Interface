@@ -12,13 +12,17 @@ function Template() {
   const location = useLocation();
   const [targetId, setTargetId] = React.useState(null);
 
-  const handleNavItemClick = (navItem, type) => {
+  const handleNavItemClick = (navItem, type, action) => {
     const id = navItem.toLowerCase();
     setTargetId(id);
+    if (action === "scroll") {
+      navigate(`/#${id}`);
+    } else {
+      navigate("/" + navItem);
+    }
     if (type === "ResponsiveList") {
       setShowNavList(false);
     }
-    navigate(`/#${id}`);
   };
 
   useEffect(() => {
@@ -38,7 +42,7 @@ function Template() {
       }
     }
   }, [location, targetId]);
-  
+
   return (
     <>
       <Box

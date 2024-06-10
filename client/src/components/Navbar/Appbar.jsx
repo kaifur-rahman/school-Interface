@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { navItems } from "../../constants/Data/navbar";
 import { colorScheme } from "../../constants/colorScheme";
 
@@ -121,7 +121,7 @@ function ResponsiveAppBar({
                   cursor: "pointer",
                   "&:hover": { color: colorScheme.primaryOrange },
                 }}
-                onClick={() => handleNavItemClick(navItem.title)}
+                onClick={() => handleNavItemClick(navItem.title, "", "scroll")}
               >
                 {navItem.title}
               </Typography>
@@ -134,22 +134,24 @@ function ResponsiveAppBar({
               display: { xs: "none", sm: "none", md: "inline" },
             }}
           >
-            <Link to="/login">
-              <Typography
-                variant="h6"
-                gutterBottom
-                sx={{
-                  textDecoration: "none",
-                  color: "#ffffff",
-                  fontSize: "1rem",
-                  mr: "1rem",
-                  "&:hover": { color: colorScheme.primaryOrange },
-                  cursor: "pointer",
-                }}
-              >
-                Login
-              </Typography>
-            </Link>
+            <NavLink to="/login">
+              {({ isActive }) => (
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{
+                    textDecoration: "none",
+                    color: isActive ? colorScheme.primaryOrange : "#ffffff",
+                    fontSize: "1rem",
+                    mr: "1rem",
+                    "&:hover": { color: colorScheme.primaryOrange },
+                    cursor: "pointer",
+                  }}
+                >
+                  Login
+                </Typography>
+              )}
+            </NavLink>
           </Box>
         </Toolbar>
       </Container>

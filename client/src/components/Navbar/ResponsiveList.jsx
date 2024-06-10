@@ -4,7 +4,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import PersonIcon from "@mui/icons-material/Person";
-import { Link } from "react-router-dom";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
@@ -15,12 +14,12 @@ import ReviewsIcon from "@mui/icons-material/Reviews";
 import HomeIcon from "@mui/icons-material/Home";
 import { colorScheme } from "../../constants/colorScheme";
 import { navItems } from "../../constants/Data/navbar";
-import { getBottomNavigationUtilityClass } from "@mui/material";
 
 export default function ResponsiveList({ handleNavItemClick }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <Box
       sx={{
@@ -31,41 +30,42 @@ export default function ResponsiveList({ handleNavItemClick }) {
       }}
     >
       {/* Login button */}
-      <Link to="/login" style={{ textDecoration: "none" }}>
-        <ListItem
-          key={"LoginList"}
+
+      <ListItem
+        key={"LoginList"}
+        onClick={() => handleNavItemClick("login", "ResponsiveList")}
+        sx={{
+          mb: "0.8rem",
+          mt: "0.5rem",
+          cursor: "pointer",
+          textDecoration: "none",
+          "&:hover": { color: colorScheme.primaryOrange },
+        }}
+      >
+        <ListItemIcon key={"loginListIcon"}>
+          <PersonIcon
+            key={"loginIcon"}
+            sx={{ color: colorScheme.secondaryGrey }}
+          />
+        </ListItemIcon>
+
+        <Typography
+          key={"loginListText"}
+          variant="h6"
+          gutterBottom
           sx={{
-            mb: "0.8rem",
-            mt: "0.5rem",
-            cursor: "pointer",
-            textDecoration: "none",
+            textDecoration: "none!important",
+            color: "#000000",
+            fontSize: "1rem",
+            mr: "1rem",
             "&:hover": { color: colorScheme.primaryOrange },
+            cursor: "pointer",
           }}
         >
-          <ListItemIcon key={"loginListIcon"}>
-            <PersonIcon
-              key={"loginIcon"}
-              sx={{ color: colorScheme.secondaryGrey }}
-            />
-          </ListItemIcon>
+          Login
+        </Typography>
+      </ListItem>
 
-          <Typography
-            key={"loginListText"}
-            variant="h6"
-            gutterBottom
-            sx={{
-              textDecoration: "none!important",
-              color: "#000000",
-              fontSize: "1rem",
-              mr: "1rem",
-              "&:hover": { color: colorScheme.primaryOrange },
-              cursor: "pointer",
-            }}
-          >
-            Login
-          </Typography>
-        </ListItem>
-      </Link>
       <Divider sx={{ height: "0.1rem" }} />
       <List>
         {navItems.map((navItem, index) => (
@@ -79,7 +79,7 @@ export default function ResponsiveList({ handleNavItemClick }) {
                 "&:hover": { color: colorScheme.primaryOrange },
               }}
               onClick={() =>
-                handleNavItemClick(navItem.title, "ResponsiveList")
+                handleNavItemClick(navItem.title, "ResponsiveList", "scroll")
               }
             >
               <ListItemIcon key={navItem.title + "listItemIcon"}>

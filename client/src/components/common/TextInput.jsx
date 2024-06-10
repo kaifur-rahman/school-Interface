@@ -12,6 +12,7 @@ function TextInput({
   type,
   alternateLabel,
   required,
+  style,
 }) {
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -48,6 +49,7 @@ function TextInput({
           mr: { xs: 0, md: "3rem" },
           mb: { xs: "1.5rem", md: 0 },
           mt: "2rem",
+          ...style,
         }}
       />
     </>
