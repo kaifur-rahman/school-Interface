@@ -30,6 +30,7 @@ export default function Login() {
           sx={{
             display: "flex",
             justifyContent: "center",
+            backgroundColor: "#ffffff",
             flexDirection: "column",
             alignItems: "center",
             justifyItems: "center",
