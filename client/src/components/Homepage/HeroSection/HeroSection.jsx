@@ -16,7 +16,7 @@ function HeroSection() {
         id="home"
         sx={{
           width: "100%",
-          height: "40rem",
+          height: "38rem",
         }}
       >
         <Container

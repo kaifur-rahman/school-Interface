@@ -2,6 +2,8 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import InputAdornment from "@mui/material/InputAdornment";
 import { colorScheme } from "../../constants/colorScheme";
 
 function TextInput({
@@ -13,6 +15,8 @@ function TextInput({
   alternateLabel,
   required,
   style,
+  iconRequired,
+  icon,
 }) {
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -36,6 +40,11 @@ function TextInput({
         required={required}
         type={type ? type : "text"}
         onChange={handleChange}
+        InputProps={{
+          startAdornment: iconRequired ? (
+            <InputAdornment position="start">{icon}</InputAdornment>
+          ) : null,
+        }}
         sx={{
           "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {

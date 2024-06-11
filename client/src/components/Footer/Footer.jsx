@@ -75,9 +75,9 @@ function Footer() {
               key={"Training"}
               fTitle={"Training"}
               fList={[
-                { title: "Abc", url: "#" },
-                { title: "Def", url: "#" },
-                { title: "Ghi", url: "#" },
+                { title: "Software Training", url: "#" },
+                { title: "Training Dashboard", url: "#" },
+                { title: "Creation Dashboard", url: "#" },
               ]}
             ></FooterMenu>
           </Grid>
@@ -86,12 +86,13 @@ function Footer() {
               key={"About"}
               fTitle={"About"}
               fList={[
-                { title: "JKL", url: "#" },
-                { title: "MNO", url: "#" },
-                { title: "PQR", url: "#" },
+                { title: "News", url: "#" },
+                { title: "About Us", url: "#" },
+                { title: "Stats", url: "#" },
               ]}
             ></FooterMenu>
           </Grid>
+
           <Grid item xs={12} md={4}>
             <ContactDetails />
           </Grid>

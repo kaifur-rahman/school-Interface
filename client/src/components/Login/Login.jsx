@@ -4,6 +4,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextInput from "../common/TextInput";
+import KeyIcon from "@mui/icons-material/Key";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import { colorScheme } from "../../constants/colorScheme";
 import { Link, useNavigation } from "react-router-dom";
 
@@ -71,6 +73,8 @@ export default function Login() {
                 label={"Username"}
                 id={"username"}
                 type={"email"}
+                iconRequired={true}
+                icon={<AlternateEmailIcon />}
               />
             </Box>
             <Box sx={{ width: "100%", mt: "0.5rem" }}>
@@ -80,6 +84,8 @@ export default function Login() {
                 label={"Password"}
                 id={"password"}
                 type={"password"}
+                iconRequired={true}
+                icon={<KeyIcon />}
               />
             </Box>
             <Typography variant="caption" display="block" sx={{ mt: "1rem" }}>
