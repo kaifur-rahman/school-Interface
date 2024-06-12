@@ -3,12 +3,10 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { colorScheme } from "../../../constants/colorScheme";
-import Button from "@mui/material/Button";
-import InputIcon from "@mui/icons-material/Input";
 import SourceIcon from "@mui/icons-material/Source";
 import { LinearGradient } from "react-text-gradients";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
-
+import CourseSearch from "../CourseSearch/CourseSearch";
 function HeroSection() {
   return (
     <>
@@ -16,7 +14,8 @@ function HeroSection() {
         id="home"
         sx={{
           width: "100%",
-          height: "38rem",
+          mb: "3rem",
+          mt: "-1rem",
         }}
       >
         <Container
@@ -119,20 +118,7 @@ function HeroSection() {
               </Typography>
             </Box>
           </Box>
-
-          <Button
-            variant="contained"
-            sx={{
-              textAlign: "center",
-              backgroundColor: colorScheme.secondaryGrey,
-              mt: "2rem",
-              mb: "1rem",
-              "&:hover": { backgroundColor: colorScheme.primaryOrange },
-            }}
-            startIcon={<InputIcon />}
-          >
-            Get Started
-          </Button>
+          <CourseSearch />
         </Container>
       </Box>
     </>

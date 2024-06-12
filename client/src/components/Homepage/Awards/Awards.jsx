@@ -20,7 +20,12 @@ function Awards() {
         <Typography
           variant="h4"
           gutterBottom
-          sx={{ textAlign: "center", mb: "1rem", fontWeight: "bold" }}
+          sx={{
+            textAlign: "center",
+            mt: "6rem",
+            mb: "3rem",
+            fontWeight: "bold",
+          }}
         >
           Awards & Honors
         </Typography>

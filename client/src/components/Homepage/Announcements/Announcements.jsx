@@ -31,7 +31,7 @@ function Announcements() {
           modules={[Autoplay, Pagination]}
         >
           {announcements.map((data) => (
-            <SwiperSlide>
+            <SwiperSlide key={data}>
               <Alert
                 variant="outlined"
                 icon={
@@ -45,6 +45,7 @@ function Announcements() {
                   display: "flex",
                   color: colorScheme.secondaryGrey,
                   borderColor: colorScheme.primaryOrangeLight,
+
                   justifyContent: "center",
                 }}
               >
