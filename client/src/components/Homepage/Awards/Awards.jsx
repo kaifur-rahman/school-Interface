@@ -46,7 +46,9 @@ function Awards() {
                   sx={{
                     width: "15rem",
                     height: "8rem",
-                    backgroundColor: colorScheme.primaryOrangeLight,
+                    background: `radial-gradient(circle, ${"#ffffff"}, ${
+                      colorScheme.primaryOrangeLight
+                    })`,
                     borderRadius: "0.5rem",
                     display: "flex",
                     justifyContent: "center",
@@ -66,7 +68,7 @@ function Awards() {
                     >
                       <IconButton aria-label="delete">
                         <OpenInNewIcon
-                          sx={{ color: colorScheme.secondaryGrey }}
+                          sx={{ color: colorScheme.primaryOrange }}
                         />
                       </IconButton>
                     </Grid>
@@ -79,7 +81,7 @@ function Awards() {
                           p: "1rem",
                           fontWeight: "bold",
                           fontSize: "1.2rem",
-                          color: colorScheme.primaryOrange,
+                          color: colorScheme.secondaryGrey,
                         }}
                       >
                         {award}

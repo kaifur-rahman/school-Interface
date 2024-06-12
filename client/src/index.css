@@ -2,3 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #f89021 !important;
+}
