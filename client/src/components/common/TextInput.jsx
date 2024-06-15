@@ -2,7 +2,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import InputAdornment from "@mui/material/InputAdornment";
 import { colorScheme } from "../../constants/colorScheme";
 
@@ -17,6 +16,8 @@ function TextInput({
   style,
   iconRequired,
   icon,
+  multiline,
+  rows,
 }) {
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -34,6 +35,8 @@ function TextInput({
         id={id}
         name={id}
         label={alternateLabel === true ? "" : label}
+        multiline={multiline}
+        rows={multiline ? rows : undefined}
         variant="outlined"
         size="small"
         value={value}

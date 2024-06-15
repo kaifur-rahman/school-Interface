@@ -2,8 +2,7 @@ const testimonials = [
   {
     message:
       "We are very grateful to Spoken Tutorials for connecting with VIDYA and helping us impact the lives of these students, by providing them these opportunities, which otherwise they would not have had access to.",
-    author:
-      "Mehala Nagarajah, Program Manager - VIDYA Integrated Development for Youth and Adults",
+    author: "Nagarajah, Program Manager - VIDYA Integrated Development",
   },
   {
     message:
@@ -25,13 +24,12 @@ const testimonials = [
     message:
       "We are very grateful to Spoken Tutorials for connecting with VIDYA and helping us impact the lives of these students, by providing them these opportunities, which otherwise they would not have had access to.",
     author:
-      "Mehala Nagarajah, Program Manager - VIDYA Integrated Development for Youth and Adults",
+      "Mehala, Program Manager - VIDYA Integrated Development for Youth and Adults",
   },
   {
     message:
       "We are very grateful to Spoken Tutorials for connecting with VIDYA and helping us impact the lives of these students, by providing them these opportunities, which otherwise they would not have had access to.",
-    author:
-      "Mehala Nagarajah, Program Manager - VIDYA Integrated Development for Youth and Adults",
+    author: "Mehala Nag, Program Manager - VIDYA Integrated Development",
   },
 ];
 export { testimonials };

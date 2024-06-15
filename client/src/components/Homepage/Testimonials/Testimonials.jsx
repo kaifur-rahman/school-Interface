@@ -6,6 +6,7 @@ import { Grid } from "@mui/material";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { colorScheme } from "../../../constants/colorScheme";
+import Divider from "@mui/material/Divider";
 import { testimonials } from "../../../constants/Data/testimonials";
 
 function Testimonials() {
@@ -26,6 +27,7 @@ function Testimonials() {
   return (
     <Box>
       <Container
+        id="testimonials"
         sx={{
           width: "100%",
           height: "100%",
@@ -59,7 +61,6 @@ function Testimonials() {
               const message = isExpanded
                 ? data.message
                 : truncateMessage(data.message, 140);
-
               return (
                 <Grid item xs={12} sm={6} md={4} key={data.author}>
                   <Box
@@ -99,6 +100,10 @@ function Testimonials() {
                           </IconButton>
                         </Typography>
                       </Grid>
+                      <Divider
+                        variant="fullWidth"
+                        sx={{ width: "100%", mt: "1rem", mb: "-0.3rem" }}
+                      />
                       <Grid
                         item
                         sx={{
@@ -111,9 +116,11 @@ function Testimonials() {
                           sx={{ color: colorScheme.primaryOrange }}
                         />
                         <Typography
+                          variant="caption"
                           sx={{
                             fontSize: "0.7rem",
                             fontWeight: "bold",
+                            mt: "1rem",
                             ml: "0.5rem",
                           }}
                         >

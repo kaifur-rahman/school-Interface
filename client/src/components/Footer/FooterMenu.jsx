@@ -7,7 +7,6 @@ function FooterMenu({ fTitle, fList }) {
   return (
     <>
       <Typography
-        key={fTitle}
         variant="subtitle2"
         gutterBottom
         sx={{
@@ -28,35 +27,29 @@ function FooterMenu({ fTitle, fList }) {
       </Typography>
       {fList.map((obj) => (
         <>
-          <React.Fragment key={obj.title}>
-            <Link
-              to={obj.url}
-              style={{ textDecoration: "none" }}
+          <Link to={obj.url} style={{ textDecoration: "none" }} key={obj.title}>
+            <Typography
+              variant="caption"
+              display="block"
               key={obj.title}
+              gutterBottom
+              sx={{
+                color: "#ffffff",
+                ml: "0.4rem",
+                mb: "0.5rem",
+                "&:hover": { color: colorScheme.primaryOrange },
+                textAlign: {
+                  xs: "center",
+                  sm: "center",
+                  md: "left",
+                  lg: "left",
+                  xl: "left",
+                },
+              }}
             >
-              <Typography
-                variant="caption"
-                display="block"
-                key={obj.title}
-                gutterBottom
-                sx={{
-                  color: "#ffffff",
-                  ml: "0.4rem",
-                  mb: "0.5rem",
-                  "&:hover": { color: colorScheme.primaryOrange },
-                  textAlign: {
-                    xs: "center",
-                    sm: "center",
-                    md: "left",
-                    lg: "left",
-                    xl: "left",
-                  },
-                }}
-              >
-                {obj.title}
-              </Typography>
-            </Link>
-          </React.Fragment>
+              {obj.title}
+            </Typography>
+          </Link>
         </>
       ))}
     </>

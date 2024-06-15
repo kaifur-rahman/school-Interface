@@ -16,7 +16,7 @@ function Awards() {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Box>
+      <Box id="awards">
         <Typography
           variant="h4"
           gutterBottom

@@ -10,6 +10,8 @@ import Divider from "@mui/material/Divider";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import ForumIcon from "@mui/icons-material/Forum";
 import Groups3Icon from "@mui/icons-material/Groups3";
+import HandshakeIcon from "@mui/icons-material/Handshake";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import HomeIcon from "@mui/icons-material/Home";
 import { colorScheme } from "../../constants/colorScheme";
@@ -99,12 +101,22 @@ export default function ResponsiveList({ handleNavItemClick }) {
                     sx={{ color: colorScheme.secondaryGrey }}
                   />
                 ) : navItem.title === "Collaborate" ? (
-                  <Groups3Icon
+                  <HandshakeIcon
                     key={navItem.title + "icon"}
                     sx={{ color: colorScheme.secondaryGrey }}
                   />
                 ) : navItem.title === "Feedback" ? (
                   <RateReviewIcon
+                    key={navItem.title + "icon"}
+                    sx={{ color: colorScheme.secondaryGrey }}
+                  />
+                ) : navItem.title === "Awards" ? (
+                  <EmojiEventsIcon
+                    key={navItem.title + "icon"}
+                    sx={{ color: colorScheme.secondaryGrey }}
+                  />
+                ) : navItem.title === "Community" ? (
+                  <Groups3Icon
                     key={navItem.title + "icon"}
                     sx={{ color: colorScheme.secondaryGrey }}
                   />
