@@ -4,10 +4,10 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import ForumIcon from "@mui/icons-material/Forum";
 import Button from "@mui/material/Button";
-import { coumminityInsights } from "../../../constants/Data/communityInsights";
+import Typography from "@mui/material/Typography";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { colorScheme } from "../../../constants/colorScheme";
-import Typography from "@mui/material/Typography";
+import { coumminityInsights } from "../../../constants/Data/homepage";
 
 function CommunityInsights() {
   return (
@@ -58,7 +58,7 @@ function CommunityInsights() {
                             height: "3rem",
                             width: "3rem",
                             backgroundColor: colorScheme.primaryOrangeLight,
-                            borderRadius: "0.15rem",
+                            borderRadius: "0.5rem",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",

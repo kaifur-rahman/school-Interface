@@ -4,13 +4,13 @@ import Marquee from "react-fast-marquee";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import { awards } from "../../../constants/Data/awards.js";
-import { colorScheme } from "../../../constants/colorScheme";
-import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Grid } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { awards } from "../../../constants/Data/homepage";
+import { colorScheme } from "../../../constants/colorScheme";
+
 function Awards() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -73,7 +73,10 @@ function Awards() {
                     >
                       <IconButton aria-label="delete">
                         <OpenInNewIcon
-                          sx={{ color: colorScheme.primaryOrange }}
+                          sx={{
+                            color: colorScheme.primaryOrange,
+                            fontSize: "1rem",
+                          }}
                         />
                       </IconButton>
                     </Grid>

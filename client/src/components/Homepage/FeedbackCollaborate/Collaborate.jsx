@@ -5,8 +5,8 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Chip from "@mui/material/Chip";
-import { additionalLinks } from "../../../constants/Data/additionalLinks";
 import { colorScheme } from "../../../constants/colorScheme";
+import { additionalLinks } from "../../../constants/Data/homepage";
 
 function Collaborate() {
   return (

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import IconButton from "@mui/material/IconButton";
-import { Grid } from "@mui/material";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { colorScheme } from "../../../constants/colorScheme";
+import { Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import { testimonials } from "../../../constants/Data/testimonials";
+import { colorScheme } from "../../../constants/colorScheme";
+import { testimonials } from "../../../constants/Data/homepage";
 
 function Testimonials() {
   const [expanded, setExpanded] = useState({});
@@ -110,6 +110,8 @@ function Testimonials() {
                           display: "flex",
                           justifyContent: "space-around",
                           alignItems: "center",
+                          alignContent: "center",
+                          mt: "0.5rem",
                         }}
                       >
                         <AccountCircleIcon
@@ -120,7 +122,7 @@ function Testimonials() {
                           sx={{
                             fontSize: "0.7rem",
                             fontWeight: "bold",
-                            mt: "1rem",
+                            mt: "0rem",
                             ml: "0.5rem",
                           }}
                         >

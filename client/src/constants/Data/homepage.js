@@ -1,3 +1,44 @@
+const additionalLinks = [
+  { label: "Twitter", url: "https://twitter.com/kannanmoudgalya" },
+  { label: "Tedx Talk", url: "https://www.youtube.com/watch?v=JaX_uD8JFpI" },
+  { label: "About PI", url: "" },
+  { label: "Partnered with Nasscom", url: "https://futureskills.nasscom.in/" },
+];
+
+const announcements = [
+  "Spoken Tutorials in Korku language helps lessen Child malnutrition in Melghat.",
+  "Spoken Tutorials for Education, Employment and Empowerment | Kannan Moudgalya | TEDxNMIMSShirpur.",
+  "Spoken Tutorials for Education, Employment and Empowerment",
+];
+
+const awards = [
+  "Re-Engineering India Award 2020",
+  "Reimagine Education Award 2015",
+  "Nomination for HT for Mumbai Awards 2015",
+  "Google MOOCs Research Award 2015",
+];
+
+const coumminityInsights = [
+  {
+    title: "Forum",
+    description:
+      "Spoken Tutorial Forums is a friendly online discussion forum. You can join existing discussions or start new topics, and get lots of replies from the Spoken Tutorial community. Registration to Forums is completely free and takes only one minute.",
+    url: "#",
+  },
+  {
+    title: "News / Events",
+    description:
+      "Check out the amazing testimonials, media articles, events, collaboration, seminars, talks and campaigns about the Spoken Tutorial Project. Browse through our gallery and see what the Project has been doing across India.",
+    url: "#",
+  },
+  {
+    title: "Software Training",
+    description:
+      "The Spoken Tutorial Project is about teaching and learning a particular FOSS (Free and Open Source Software) like Linux, Scilab, LaTeX, PHP & MySQL, Java, C/C++, LibreOffice etc. via an easy Video tool - Spoken Tutorials.",
+    url: "#",
+  },
+];
+
 const testimonials = [
   {
     message:
@@ -32,4 +73,11 @@ const testimonials = [
     author: "Mehala Nag, Program Manager - VIDYA Integrated Development",
   },
 ];
-export { testimonials };
+
+export {
+  additionalLinks,
+  announcements,
+  awards,
+  coumminityInsights,
+  testimonials,
+};

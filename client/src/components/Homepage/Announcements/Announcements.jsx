@@ -1,12 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
-import { announcements } from "../../../constants/Data/announcements";
 import Button from "@mui/material/Button";
 import CampaignIcon from "@mui/icons-material/Campaign";
-import { colorScheme } from "../../../constants/colorScheme";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { colorScheme } from "../../../constants/colorScheme";
+import { announcements } from "../../../constants/Data/homepage";
 
 import "swiper/css";
 import "swiper/css/pagination";
