@@ -10,8 +10,9 @@ import SignupForm from "./Step2/SignupForm";
 import { colorScheme } from "../../constants/colorScheme";
 import { Container } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import { steps, initialFormData } from "../../constants/Data/signup";
+import { PropTypes } from "prop-types";
 
-const steps = ["Select Role", "Fill Details"];
 const stepStyle = {
   "& .Mui-active": {
     "& .MuiSvgIcon-root": {
@@ -25,48 +26,17 @@ const stepStyle = {
   },
 };
 
-export default function Signup({ urlRole }) {
-  //data
-  const [signupRole, setSignupRole] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [dob, setDob] = useState("");
-  const [userOrg, setUserOrg] = useState("");
-  const [userSchool, setUserSchool] = useState("");
-  const [orgName, setOrgName] = useState("");
-  const [dateEstablish, setDateEstablish] = useState("");
-  const [orgType, setOrgType] = useState("");
-  const [parentOrg, setParentOrg] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
-  const [district, setDistrict] = useState("");
-  const [pinCode, setPinCode] = useState("");
-  const [address, setAddress] = useState("");
-  // console.log(
-  //   signupRole,
-  //   firstName,
-  //   lastName,
-  //   email,
-  //   username,
-  //   phone,
-  //   password,
-  //   confirmPassword,
-  //   dob,
-  //   userSchool,
-  //   userOrg
-  // );
+function Signup({ urlRole }) {
+  const [formData, setFormData] = useState(initialFormData);
 
-  //utilites
-
+  //to move to next step automatically if role already selected
   const navigate = useNavigate();
   useEffect(() => {
     if (urlRole) {
-      setSignupRole(urlRole);
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        signupRole: urlRole,
+      }));
       setActiveStep(1);
     }
   }, [urlRole]);
@@ -74,16 +44,12 @@ export default function Signup({ urlRole }) {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
   const isStepSkipped = (step) => {
     return skipped.has(step);
   };
 
   const handleNext = () => {
-    if (activeStep === 0 && signupRole === "") {
+    if (activeStep === 0 && formData.signupRole === "") {
       alert("Please Select Role");
     } else {
       let newSkipped = skipped;
@@ -100,45 +66,17 @@ export default function Signup({ urlRole }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
-
   const handleReset = () => {
     setActiveStep(0);
-    //reset data enetered
-    setSignupRole("");
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setUsername("");
-    setPhone("");
-    setPassword("");
-    setConfirmPassword("");
-    setDob("");
-    setUserOrg("");
-    setUserSchool("");
-    setOrgName("");
-    setDateEstablish("");
-    setOrgType("");
-    setParentOrg("");
-    setState("");
-    setCity("");
-    setDistrict("");
-    setPinCode("");
-    setAddress("");
+    setFormData(initialFormData);
     navigate("/signup");
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -146,28 +84,19 @@ export default function Signup({ urlRole }) {
       {/* stepper icon and label */}
       <Stepper activeStep={activeStep} alternativeLabel sx={stepStyle}>
         {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-
-          if (isStepOptional(0)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-
           return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>
-                {index === 0 && signupRole !== "" ? signupRole : label}
+            <Step key={label}>
+              <StepLabel>
+                {index === 0 && formData.signupRole !== ""
+                  ? formData.signupRole
+                  : label}
               </StepLabel>
             </Step>
           );
         })}
       </Stepper>
-      {/* all steps completed component */}
+
+      {/* after all steps completed component */}
       {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
@@ -185,51 +114,18 @@ export default function Signup({ urlRole }) {
           {/* Each step body content here */}
           {activeStep === 0 ? (
             // step 1
-
-            <SelectRole role={signupRole} setRole={setSignupRole} />
+            <SelectRole
+              role={formData.signupRole}
+              setRole={(role) =>
+                setFormData((prevFormData) => ({
+                  ...initialFormData,
+                  signupRole: role,
+                }))
+              }
+            />
           ) : activeStep === 1 ? (
             // step 2
-            <SignupForm
-              signupRole={signupRole}
-              firstName={firstName}
-              setFirstName={setFirstName}
-              lastName={lastName}
-              setLastName={setLastName}
-              email={email}
-              setEmail={setEmail}
-              username={username}
-              setUsername={setUsername}
-              phone={phone}
-              setPhone={setPhone}
-              password={password}
-              setPassword={setPassword}
-              confirmPassword={confirmPassword}
-              setConfirmPassword={setConfirmPassword}
-              dob={dob}
-              setDob={setDob}
-              userOrg={userOrg}
-              setUserOrg={setUserOrg}
-              userSchool={userSchool}
-              setUserSchool={setUserSchool}
-              orgName={orgName}
-              setOrgName={setOrgName}
-              dateEstablish={dateEstablish}
-              setDateEstablish={setDateEstablish}
-              orgType={orgType}
-              setOrgType={setOrgType}
-              parentOrg={parentOrg}
-              setParentOrg={setParentOrg}
-              state={state}
-              setState={setState}
-              city={city}
-              setCity={setCity}
-              district={district}
-              setDistrict={setDistrict}
-              pinCode={pinCode}
-              setPinCode={setPinCode}
-              address={address}
-              setAddress={setAddress}
-            />
+            <SignupForm formData={formData} setFormData={handleChange} />
           ) : // step 3
           null}
 
@@ -255,17 +151,10 @@ export default function Signup({ urlRole }) {
               Back
             </Button>
 
-            {/* next and skip button box */}
+            {/* next button box */}
             <Box sx={{ flex: "1 1 auto" }} />
-            {/* to make skip button active */}
 
-            {/* {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )} */}
-
-            {/* next& reset button */}
+            {/* next & reset button */}
             {activeStep === steps.length - 1 ? (
               <Button
                 variant="outlined"
@@ -309,3 +198,8 @@ export default function Signup({ urlRole }) {
     </Container>
   );
 }
+
+Signup.propTypes = {
+  urlRole: PropTypes.string,
+};
+export default Signup;

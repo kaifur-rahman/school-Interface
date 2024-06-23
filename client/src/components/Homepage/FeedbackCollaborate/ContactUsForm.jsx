@@ -53,8 +53,9 @@ function ContactUsForm() {
             <TextInput
               value={name}
               setValue={setName}
+              requiredToFill={true}
               label={"Your Name"}
-              id={"Your Name"}
+              id={"yourName"}
               style={{ width: "100%", mt: "-0.5rem", mb: "-1rem" }}
             />
           </Grid>
@@ -71,8 +72,9 @@ function ContactUsForm() {
             <TextInput
               value={email}
               setValue={setEmail}
+              requiredToFill={true}
               label={"Your Email"}
-              id={"Your Email"}
+              id={"yourEmail"}
               style={{ width: "100%", mb: "-1rem" }}
             />
           </Grid>
@@ -89,8 +91,9 @@ function ContactUsForm() {
             <TextInput
               value={message}
               setValue={setMessage}
+              requiredToFill={true}
               label={"Your Message"}
-              id={"Your Message"}
+              id={"yourMessage"}
               style={{ width: "100%", mb: "-1rem" }}
               multiline={true}
               rows={8}

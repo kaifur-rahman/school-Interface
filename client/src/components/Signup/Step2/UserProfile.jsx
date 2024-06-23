@@ -3,26 +3,9 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import TextInput from "../../common/TextInput";
 import { colorScheme } from "../../../constants/colorScheme";
+import { PropTypes } from "prop-types";
 
-function userProfile({
-  signupRole,
-  firstName,
-  setFirstName,
-  lastName,
-  setLastName,
-  email,
-  setEmail,
-  username,
-  setUsername,
-  password,
-  setPassword,
-  confirmPassword,
-  setConfirmPassword,
-  dob,
-  setDob,
-  phone,
-  setPhone,
-}) {
+function UserProfile({ formData, setFormData }) {
   return (
     <>
       <Grid container sx={{ mb: "1rem" }}>
@@ -51,61 +34,69 @@ function userProfile({
           <TextInput
             id={"firstName"}
             label={"First Name"}
-            value={firstName}
-            setValue={setFirstName}
-            required={true}
+            value={formData.firstName}
+            customOnChangeFun={true}
+            setValue={setFormData}
+            requiredToFill={true}
           ></TextInput>
           <TextInput
-            id={"LastName"}
+            id={"lastName"}
             label={"Last Name"}
-            value={lastName}
-            required={true}
-            setValue={setLastName}
+            customOnChangeFun={true}
+            value={formData.lastName}
+            requiredToFill={true}
+            setValue={setFormData}
           ></TextInput>
           <TextInput
             id={"email"}
             label={"Email"}
-            value={email}
-            required={true}
-            setValue={setEmail}
+            customOnChangeFun={true}
+            value={formData.email}
+            requiredToFill={true}
+            setValue={setFormData}
             type={"email"}
           ></TextInput>
           <TextInput
             id={"username"}
             label={"Username"}
-            value={username}
-            setValue={setUsername}
+            customOnChangeFun={true}
+            value={formData.username}
+            setValue={setFormData}
           ></TextInput>
           <TextInput
             id={"password"}
             label={"Password"}
-            value={password}
-            setValue={setPassword}
+            customOnChangeFun={true}
+            value={formData.password}
+            setValue={setFormData}
             type={"password"}
           ></TextInput>
           <TextInput
             id={"confirmPassword"}
             label={"Confirm Password"}
-            value={confirmPassword}
-            setValue={setConfirmPassword}
+            customOnChangeFun={true}
+            value={formData.confirmPassword}
+            setValue={setFormData}
             type={"password"}
           ></TextInput>
           <TextInput
             id={"phone"}
             label={"Phone"}
-            value={phone}
-            required={true}
+            customOnChangeFun={true}
+            value={formData.phone}
+            requiredToFill={true}
             type={"number"}
-            setValue={setPhone}
+            setValue={setFormData}
           ></TextInput>
-          {signupRole !== "Training Team" ? (
+          {formData.signupRole !== "Training Team" ? (
             <TextInput
               id={"dob"}
-              value={dob}
+              value={formData.dob}
+              customOnChangeFun={true}
               type={"date"}
-              label={"DOB"}
-              alternateLabel={true}
-              setValue={setDob}
+              alternateLabelRequired={true}
+              alternateLabel={"DOB"}
+              setValue={setFormData}
             ></TextInput>
           ) : null}
         </Grid>
@@ -114,4 +105,9 @@ function userProfile({
   );
 }
 
-export default userProfile;
+UserProfile.propTypes = {
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
+};
+
+export default UserProfile;

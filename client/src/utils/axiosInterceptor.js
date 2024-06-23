@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPrivate = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
+  baseURL: "",
 });
 
 export { axiosPrivate };
@@ -9,12 +9,13 @@ export { axiosPrivate };
 // request interceptor
 axiosPrivate.interceptors.request.use(
   function (config) {
-    // Do something before request is sent
+    // This function is called before the request is sent
+    // You can modify the request configuration here
     console.log("From interceptor before req is being sent");
     return config;
   },
   function (error) {
-    // Do something with request error
+    // This function is called if there is an error during the request setup
     return Promise.reject(error);
   }
 );
@@ -28,8 +29,15 @@ axiosPrivate.interceptors.response.use(
     return response;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
-    return Promise.reject(error);
+    if (error.response) {
+      // Server responded with a status code outside the range of 2xx
+      console.error("Response error:", error.response);
+    } else if (error.request) {
+      // Request was made but no response was received
+      console.error("No response received:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an error
+      console.error("Request setup error:", error.message);
+    }
   }
 );

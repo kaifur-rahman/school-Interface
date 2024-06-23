@@ -7,8 +7,17 @@ import PersonIcon from "@mui/icons-material/Person";
 import GroupsIcon from "@mui/icons-material/Groups";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import { colorScheme } from "../../../constants/colorScheme";
+import { PropTypes } from "prop-types";
 
 function RoleCard({ title, description }) {
+  const iconMap = {
+    Organization: (
+      <CorporateFareIcon sx={{ color: colorScheme.primaryOrange }} />
+    ),
+    School: <SchoolIcon sx={{ color: colorScheme.primaryOrange }} />,
+    User: <PersonIcon sx={{ color: colorScheme.primaryOrange }} />,
+    "Training Team": <GroupsIcon sx={{ color: colorScheme.primaryOrange }} />,
+  };
   return (
     <>
       <Box sx={{ width: "100%", height: "100%" }}>
@@ -32,15 +41,7 @@ function RoleCard({ title, description }) {
                 alignItems: "center",
               }}
             >
-              {title === "Organization" ? (
-                <CorporateFareIcon sx={{ color: colorScheme.primaryOrange }} />
-              ) : title === "School" ? (
-                <SchoolIcon sx={{ color: colorScheme.primaryOrange }} />
-              ) : title === "User" ? (
-                <PersonIcon sx={{ color: colorScheme.primaryOrange }} />
-              ) : title === "Training Team" ? (
-                <GroupsIcon sx={{ color: colorScheme.primaryOrange }} />
-              ) : null}
+              {iconMap[title]}
             </Box>
           </Grid>
           {/* role title */}
@@ -69,5 +70,10 @@ function RoleCard({ title, description }) {
     </>
   );
 }
+
+RoleCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 export default RoleCard;

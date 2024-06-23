@@ -73,8 +73,8 @@ function Footer() {
           <Grid item xs={4} md={2}>
             <FooterMenu
               key={"Training"}
-              fTitle={"Training"}
-              fList={[
+              menuTitle={"Training"}
+              menuItems={[
                 { title: "Software Training", url: "#" },
                 { title: "Training Dashboard", url: "#" },
                 { title: "Creation Dashboard", url: "#" },
@@ -84,8 +84,8 @@ function Footer() {
           <Grid item xs={4} md={2}>
             <FooterMenu
               key={"About"}
-              fTitle={"About"}
-              fList={[
+              menuTitle={"About"}
+              menuItems={[
                 { title: "News", url: "#" },
                 { title: "About Us", url: "#" },
                 { title: "Stats", url: "#" },

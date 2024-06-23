@@ -4,45 +4,48 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import InputAdornment from "@mui/material/InputAdornment";
 import { colorScheme } from "../../constants/colorScheme";
+import { PropTypes } from "prop-types";
 
 function TextInput({
+  id,
+  type,
   value,
   setValue,
   label,
-  id,
-  type,
+  alternateLabelRequired,
   alternateLabel,
-  required,
-  style,
+  requiredToFill,
   iconRequired,
   icon,
   multiline,
   rows,
+  style,
+  customOnChangeFun,
 }) {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   return (
     <>
-      {/* alternate label if required */}
-      {alternateLabel ? (
+      {/* alternate label if required for other types of input */}
+      {alternateLabelRequired && (
         <Typography sx={{ mt: "1.7rem", mb: "-1.7rem", opacity: "60%" }}>
-          {label}
+          {alternateLabel}
         </Typography>
-      ) : null}
-
+      )}
+      {/* for custom onChange function make sure name==id of textinput matches formdata key */}
       <TextField
         id={id}
         name={id}
-        label={alternateLabel === true ? "" : label}
+        label={alternateLabelRequired ? "" : label}
         multiline={multiline}
         rows={multiline ? rows : undefined}
         variant="outlined"
         size="small"
         value={value}
-        required={required}
+        required={requiredToFill}
         type={type ? type : "text"}
-        onChange={handleChange}
+        onChange={customOnChangeFun ? setValue : handleChange}
         InputProps={{
           startAdornment: iconRequired ? (
             <InputAdornment position="start">{icon}</InputAdornment>
@@ -67,5 +70,21 @@ function TextInput({
     </>
   );
 }
+
+TextInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  alternateLabelRequired: PropTypes.bool,
+  alternateLabel: PropTypes.string,
+  requiredToFill: PropTypes.bool,
+  iconRequired: PropTypes.bool,
+  icon: PropTypes.element,
+  multiline: PropTypes.bool,
+  rows: PropTypes.number,
+  style: PropTypes.object,
+  customOnChangeFun: PropTypes.bool,
+};
 
 export default TextInput;

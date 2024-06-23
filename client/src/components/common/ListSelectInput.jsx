@@ -4,11 +4,21 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { colorScheme } from "../../constants/colorScheme";
+import { PropTypes } from "prop-types";
 
-function ListSelectInput({ value, setValue, label, options }) {
+function ListSelectInput({
+  id,
+  name,
+  value,
+  setValue,
+  label,
+  options,
+  customOnChangeFun,
+}) {
   const handleChange = async (event) => {
     setValue(event.target.value);
   };
+
   return (
     <>
       <FormControl
@@ -29,17 +39,17 @@ function ListSelectInput({ value, setValue, label, options }) {
           },
         }}
         size="small"
-        id={label}
+        id={id}
       >
-        <InputLabel id={label} sx={{ fontSize: "0.9rem" }}>
+        <InputLabel id={id} sx={{ fontSize: "0.9rem" }}>
           {label}
         </InputLabel>
         <Select
-          labelId={label}
-          id={label}
-          name={label}
+          labelId={id}
+          id={id}
+          name={name}
           value={value}
-          onChange={handleChange}
+          onChange={customOnChangeFun ? setValue : handleChange}
           label={label}
         >
           {options.map((obj) => (
@@ -52,5 +62,15 @@ function ListSelectInput({ value, setValue, label, options }) {
     </>
   );
 }
+
+ListSelectInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  customOnChangeFun: PropTypes.bool,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default ListSelectInput;

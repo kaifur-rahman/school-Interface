@@ -29,7 +29,7 @@ function Template() {
     if (targetId) {
       const element = document.getElementById(targetId);
       if (element) {
-        const headerOffset = 70; // Adjust this value based on your header height
+        const headerOffset = 70;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition =
           elementPosition + window.pageYOffset - headerOffset;
@@ -38,7 +38,7 @@ function Template() {
           top: offsetPosition,
           behavior: "smooth",
         });
-        setTargetId(null); // Reset targetId after scrolling
+        setTargetId(null);
       }
     }
   }, [location, targetId]);
@@ -52,8 +52,8 @@ function Template() {
         }}
       >
         <Appbar
-          responsiveNav={showNavList}
-          setResponsiveNav={setShowNavList}
+          showNavList={showNavList}
+          setShowNavList={setShowNavList}
           handleNavItemClick={handleNavItemClick}
         />
         <Box sx={{ mt: "6rem", mb: "6rem" }}>

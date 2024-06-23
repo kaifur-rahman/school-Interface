@@ -5,107 +5,35 @@ import UserProfile from "./UserProfile";
 import SchoolOrgProfile from "./SchoolOrgProfile";
 import TrainingTeamAdditionalDetails from "./TrainingTeamAdditionalDetails";
 import UserAdditionalDetails from "./UserAdditionalDetails";
+import { PropTypes } from "prop-types";
 
-function SignupForm({
-  signupRole,
-  firstName,
-  setFirstName,
-  lastName,
-  setLastName,
-  email,
-  setEmail,
-  username,
-  setUsername,
-  password,
-  setPassword,
-  confirmPassword,
-  setConfirmPassword,
-  dob,
-  setDob,
-  phone,
-  setPhone,
-  userOrg,
-  setUserOrg,
-  userSchool,
-  setUserSchool,
-  orgName,
-  setOrgName,
-  dateEstablish,
-  setDateEstablish,
-  orgType,
-  setOrgType,
-  parentOrg,
-  setParentOrg,
-  state,
-  setState,
-  city,
-  setCity,
-  district,
-  setDistrict,
-  pinCode,
-  setPinCode,
-  address,
-  setAddress,
-}) {
+function SignupForm({ formData, setFormData }) {
+  //dict
+  const roleComponents = {
+    Organization: SchoolOrgProfile,
+    School: SchoolOrgProfile,
+    User: UserAdditionalDetails,
+    "Training Team": TrainingTeamAdditionalDetails,
+  };
+  const SpecificRoleComponent = roleComponents[formData.signupRole];
+
   return (
     <Box sx={{ mt: "2rem" }}>
-      {/* user profile details */}
-      <UserProfile
-        signupRole={signupRole}
-        firstName={firstName}
-        setFirstName={setFirstName}
-        lastName={lastName}
-        setLastName={setLastName}
-        email={email}
-        setEmail={setEmail}
-        username={username}
-        setUsername={setUsername}
-        phone={phone}
-        setPhone={setPhone}
-        password={password}
-        setPassword={setPassword}
-        confirmPassword={confirmPassword}
-        setConfirmPassword={setConfirmPassword}
-        dob={dob}
-        setDob={setDob}
-      ></UserProfile>
+      {/* user profile details common */}
+      <UserProfile formData={formData} setFormData={setFormData}></UserProfile>
       <Divider sx={{ mt: "2rem", mb: "1rem" }} />
 
       {/* additional details */}
-      {signupRole === "Organization" || signupRole === "School" ? (
-        <SchoolOrgProfile
-          signupRole={signupRole}
-          orgName={orgName}
-          setOrgName={setOrgName}
-          dateEstablish={dateEstablish}
-          setDateEstablish={setDateEstablish}
-          orgType={orgType}
-          setOrgType={setOrgType}
-          parentOrg={parentOrg}
-          setParentOrg={setParentOrg}
-          state={state}
-          setState={setState}
-          city={city}
-          setCity={setCity}
-          district={district}
-          setDistrict={setDistrict}
-          pinCode={pinCode}
-          setPinCode={setPinCode}
-          address={address}
-          setAddress={setAddress}
-        />
-      ) : signupRole === "User" ? (
-        <UserAdditionalDetails
-          userSchool={userSchool}
-          setUserSchool={setUserSchool}
-          userOrg={userOrg}
-          setUserOrg={setUserOrg}
-        />
-      ) : signupRole === "Training Team" ? (
-        <TrainingTeamAdditionalDetails />
-      ) : null}
+      {SpecificRoleComponent && (
+        <SpecificRoleComponent formData={formData} setFormData={setFormData} />
+      )}
     </Box>
   );
 }
+
+SignupForm.propTypes = {
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
+};
 
 export default SignupForm;

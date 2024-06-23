@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
 import ListSelectInput from "../../common/ListSelectInput";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { colorScheme } from "../../../constants/colorScheme";
 import { Grid } from "@mui/material";
+
 function CourseSearch() {
   const [course, setCourse] = useState("");
   const [language, setLanguage] = useState("");
@@ -20,6 +20,8 @@ function CourseSearch() {
       >
         <Grid item xs={12} md={2}>
           <ListSelectInput
+            id={"courseList"}
+            name={"courseSearch"}
             value={course}
             setValue={setCourse}
             label={"Courses"}
@@ -28,6 +30,8 @@ function CourseSearch() {
         </Grid>
         <Grid item xs={12} md={2}>
           <ListSelectInput
+            id={"languageList"}
+            name={"languageSearch"}
             value={language}
             setValue={setLanguage}
             label={"Languages"}

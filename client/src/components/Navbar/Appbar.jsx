@@ -10,12 +10,9 @@ import Avatar from "@mui/material/Avatar";
 import { NavLink } from "react-router-dom";
 import { navItems } from "../../constants/Data/navbar";
 import { colorScheme } from "../../constants/colorScheme";
+import { PropTypes } from "prop-types";
 
-function ResponsiveAppBar({
-  responsiveNav,
-  setResponsiveNav,
-  handleNavItemClick,
-}) {
+function ResponsiveAppBar({ showNavList, setShowNavList, handleNavItemClick }) {
   return (
     <AppBar
       position="fixed"
@@ -64,7 +61,7 @@ function ResponsiveAppBar({
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={() => {
-                setResponsiveNav(!responsiveNav);
+                setShowNavList(!showNavList);
               }}
               color="inherit"
             >
@@ -158,4 +155,10 @@ function ResponsiveAppBar({
     </AppBar>
   );
 }
+
+ResponsiveAppBar.propTypes = {
+  showNavList: PropTypes.bool.isRequired,
+  setShowNavList: PropTypes.func.isRequired,
+  handleNavItemClick: PropTypes.func.isRequired,
+};
 export default ResponsiveAppBar;

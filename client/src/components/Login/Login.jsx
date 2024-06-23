@@ -13,9 +13,11 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <>
       <Box
@@ -58,94 +60,100 @@ export default function Login() {
           >
             Sign in to your account
           </Typography>
-          <Box
-            sx={{
-              width: "80%",
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
-          >
-            <Box sx={{ width: "100%" }}>
-              <TextInput
-                value={email}
-                setValue={setEmail}
-                label={"Username"}
-                id={"username"}
-                type={"email"}
-                iconRequired={true}
-                icon={<AlternateEmailIcon />}
-              />
-            </Box>
-            <Box sx={{ width: "100%", mt: "0.5rem" }}>
-              <TextInput
-                value={password}
-                setValue={setPassword}
-                label={"Password"}
-                id={"password"}
-                type={"password"}
-                iconRequired={true}
-                icon={<KeyIcon />}
-              />
-            </Box>
-            <Typography variant="caption" display="block" sx={{ mt: "1rem" }}>
-              Forgot password?
-            </Typography>
+          <form>
             <Box
               sx={{
-                backgrdounColor: "red",
-                width: "100%",
-                mt: "0.5rem",
+                width: "80%",
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
               }}
             >
-              <Button
-                size="small"
-                type="submit"
-                variant="contained"
-                name="actionType"
-                value="login"
-                disabled={navigation.state === "submitting" ? true : false}
-                sx={{
-                  mt: "1rem",
-                  backgroundColor: colorScheme.primaryOrange,
-                  "&:hover": {
-                    color: "#ffffff",
-                    backgroundColor: colorScheme.primaryOrange,
-                  },
-                }}
-              >
-                {navigation.state === "submitting" ? "Please Wait..." : "Login"}
-              </Button>
-            </Box>
-
-            <Box
-              sx={{
-                mb: "1.5rem",
-                mt: "1rem",
-              }}
-            >
-              <Typography
-                variant="caption"
-                display="block"
-                sx={{
-                  mb: "1rem",
-                  mt: "0.5rem",
-                  color: colorScheme.secondaryGrey,
-                }}
-              >
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: colorScheme.primaryOrange,
-                  }}
-                  to="/signup"
-                >
-                  Dont' have an account?
-                </Link>{" "}
-                ( Register Now )
+              <Box sx={{ width: "100%" }}>
+                <TextInput
+                  value={email}
+                  requiredToFill={true}
+                  setValue={setEmail}
+                  label={"Username"}
+                  id={"username"}
+                  type={"email"}
+                  iconRequired={true}
+                  icon={<AlternateEmailIcon />}
+                />
+              </Box>
+              <Box sx={{ width: "100%", mt: "0.5rem" }}>
+                <TextInput
+                  value={password}
+                  setValue={setPassword}
+                  label={"Password"}
+                  requiredToFill={true}
+                  id={"password"}
+                  type={"password"}
+                  iconRequired={true}
+                  icon={<KeyIcon />}
+                />
+              </Box>
+              <Typography variant="caption" display="block" sx={{ mt: "1rem" }}>
+                Forgot password?
               </Typography>
+              <Box
+                sx={{
+                  backgrdounColor: "red",
+                  width: "100%",
+                  mt: "0.5rem",
+                }}
+              >
+                <Button
+                  size="small"
+                  type="submit"
+                  variant="contained"
+                  name="actionType"
+                  value="login"
+                  disabled={navigation.state === "submitting" ? true : false}
+                  sx={{
+                    mt: "1rem",
+                    backgroundColor: colorScheme.primaryOrange,
+                    "&:hover": {
+                      color: "#ffffff",
+                      backgroundColor: colorScheme.primaryOrange,
+                    },
+                  }}
+                >
+                  {navigation.state === "submitting"
+                    ? "Please Wait..."
+                    : "Login"}
+                </Button>
+              </Box>
+
+              <Box
+                sx={{
+                  mb: "1.5rem",
+                  mt: "1rem",
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  display="block"
+                  sx={{
+                    mb: "1rem",
+                    mt: "0.5rem",
+                    color: colorScheme.secondaryGrey,
+                  }}
+                >
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: colorScheme.primaryOrange,
+                    }}
+                    to="/signup"
+                  >
+                    Dont' have an account?
+                  </Link>{" "}
+                  ( Register Now )
+                </Typography>
+              </Box>
             </Box>
-          </Box>
+          </form>
         </Box>
       </Box>
     </>

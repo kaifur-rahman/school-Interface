@@ -16,8 +16,9 @@ import ReviewsIcon from "@mui/icons-material/Reviews";
 import HomeIcon from "@mui/icons-material/Home";
 import { colorScheme } from "../../constants/colorScheme";
 import { navItems } from "../../constants/Data/navbar";
+import { PropTypes } from "prop-types";
 
-export default function ResponsiveList({ handleNavItemClick }) {
+function ResponsiveList({ handleNavItemClick }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -71,9 +72,8 @@ export default function ResponsiveList({ handleNavItemClick }) {
       <Divider sx={{ height: "0.1rem" }} />
       <List>
         {navItems.map((navItem, index) => (
-          <>
+          <React.Fragment key={navItem.title + "listItem"}>
             <ListItem
-              key={navItem.title + "listItem"}
               sx={{
                 mb: "0.8rem",
                 mt: "0.5rem",
@@ -134,9 +134,15 @@ export default function ResponsiveList({ handleNavItemClick }) {
               key={navItem.title + "divider"}
               sx={{ height: "0.1rem" }}
             />
-          </>
+          </React.Fragment>
         ))}
       </List>
     </Box>
   );
 }
+
+ResponsiveList.propTypes = {
+  handleNavItemClick: PropTypes.func.isRequired,
+};
+
+export default ResponsiveList;
