@@ -11,8 +11,11 @@ import { colorScheme } from "../../constants/colorScheme";
 import { footerSocialIcons } from "../../constants/Data/footer";
 
 function CopyRightAndSocialMedia() {
-  const currentYear = new Date().getFullYear();
-
+  const iconMap = {
+    Facebook: <FacebookRoundedIcon />,
+    Youtube: <YouTubeIcon />,
+    LinkedIn: <LinkedInIcon />,
+  };
   return (
     <Box sx={{ width: "100%", display: "flex" }}>
       <Grid
@@ -27,15 +30,59 @@ function CopyRightAndSocialMedia() {
             display="block"
             gutterBottom
             sx={{
-              color: "#ffffff",
-              opacity: "60%",
               p: "0.2rem",
+              color: colorScheme.lightText,
               ml: "1rem",
+              mt: "0.3rem",
               textAlign: "center",
             }}
           >
-            &copy; {currentYear} Spoken Tutorial Job Recommendation System. All
-            Rights Reserved.
+            Spoken Tutorial by{" "}
+            <Link
+              to={"https://www.iitb.ac.in/"}
+              target="_blank"
+              style={{
+                textDecoration: "none",
+                color: colorScheme.lightText,
+              }}
+            >
+              IIT Bombay
+            </Link>{" "}
+            is licensed under a Creative{" "}
+            <Link
+              to={"https://www.iitb.ac.in/"}
+              target="_blank"
+              style={{
+                textDecoration: "none",
+                color: colorScheme.lightText,
+              }}
+            >
+              Commons Attribution-ShareAlike 4.0 International License{" "}
+            </Link>
+            , except where stated otherwise Based on a work at
+            <Link
+              to={"https://www.iitb.ac.in/"}
+              target="_blank"
+              style={{
+                textDecoration: "none",
+                color: colorScheme.lightText,
+              }}
+            >
+              {" "}
+              https://spoken-tutorial.org
+            </Link>
+            . Permissions beyond the scope of this license may be available at
+            <Link
+              to={"https://www.iitb.ac.in/"}
+              target="_blank"
+              style={{
+                textDecoration: "none",
+                color: colorScheme.lightText,
+              }}
+            >
+              https://spoken-tutorial.org
+            </Link>
+            .
           </Typography>
         </Grid>
         <Grid
@@ -58,16 +105,7 @@ function CopyRightAndSocialMedia() {
                     },
                   }}
                 >
-                  {" "}
-                  {data.title === "Facebook" ? (
-                    <FacebookRoundedIcon></FacebookRoundedIcon>
-                  ) : data.title === "Youtube" ? (
-                    <YouTubeIcon />
-                  ) : data.title === "LinkedIn" ? (
-                    <LinkedInIcon />
-                  ) : (
-                    "#"
-                  )}
+                  {iconMap[data.title] || "#"}
                 </Box>
               </IconButton>
             </Link>

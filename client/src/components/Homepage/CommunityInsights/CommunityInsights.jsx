@@ -84,7 +84,7 @@ function CommunityInsights() {
                           variant="caption"
                           sx={{
                             color: colorScheme.lightText,
-                            fontSize: "0.9rem",
+                            fontSize: "1rem",
                           }}
                         >
                           {data.description}

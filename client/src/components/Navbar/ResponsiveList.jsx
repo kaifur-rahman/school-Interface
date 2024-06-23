@@ -23,6 +23,16 @@ function ResponsiveList({ handleNavItemClick }) {
     window.scrollTo(0, 0);
   }, []);
 
+  const iconMap = {
+    Home: <HomeIcon sx={{ color: colorScheme.secondaryGrey }} />,
+    Forum: <ForumIcon sx={{ color: colorScheme.secondaryGrey }} />,
+    Testimonials: <ReviewsIcon sx={{ color: colorScheme.secondaryGrey }} />,
+    Collaborate: <HandshakeIcon sx={{ color: colorScheme.secondaryGrey }} />,
+    Feedback: <RateReviewIcon sx={{ color: colorScheme.secondaryGrey }} />,
+    Awards: <EmojiEventsIcon sx={{ color: colorScheme.secondaryGrey }} />,
+    Community: <Groups3Icon sx={{ color: colorScheme.secondaryGrey }} />,
+  };
+
   return (
     <Box
       sx={{
@@ -85,44 +95,7 @@ function ResponsiveList({ handleNavItemClick }) {
               }
             >
               <ListItemIcon key={navItem.title + "listItemIcon"}>
-                {navItem.title === "Home" ? (
-                  <HomeIcon
-                    key={navItem.title + "icon"}
-                    sx={{ color: colorScheme.secondaryGrey }}
-                  />
-                ) : navItem.title === "Forum" ? (
-                  <ForumIcon
-                    key={navItem.title + "icon"}
-                    sx={{ color: colorScheme.secondaryGrey }}
-                  />
-                ) : navItem.title === "Testimonials" ? (
-                  <ReviewsIcon
-                    key={navItem.title + "icon"}
-                    sx={{ color: colorScheme.secondaryGrey }}
-                  />
-                ) : navItem.title === "Collaborate" ? (
-                  <HandshakeIcon
-                    key={navItem.title + "icon"}
-                    sx={{ color: colorScheme.secondaryGrey }}
-                  />
-                ) : navItem.title === "Feedback" ? (
-                  <RateReviewIcon
-                    key={navItem.title + "icon"}
-                    sx={{ color: colorScheme.secondaryGrey }}
-                  />
-                ) : navItem.title === "Awards" ? (
-                  <EmojiEventsIcon
-                    key={navItem.title + "icon"}
-                    sx={{ color: colorScheme.secondaryGrey }}
-                  />
-                ) : navItem.title === "Community" ? (
-                  <Groups3Icon
-                    key={navItem.title + "icon"}
-                    sx={{ color: colorScheme.secondaryGrey }}
-                  />
-                ) : (
-                  "#"
-                )}
+                {iconMap[navItem.title] || "#"}
               </ListItemIcon>
               <ListItemText
                 key={navItem.title + "listItemText"}

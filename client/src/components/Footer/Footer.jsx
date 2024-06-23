@@ -61,11 +61,7 @@ function Footer() {
                 marginTop: "-0.3rem",
               }}
             >
-              Spoken
-              <span style={{ color: colorScheme.primaryOrangeLight }}>
-                {" "}
-                Tutorial
-              </span>
+              Spoken Tutorial
             </Typography>
           </Grid>
 

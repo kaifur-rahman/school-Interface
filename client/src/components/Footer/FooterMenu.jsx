@@ -36,6 +36,7 @@ function FooterMenu({ menuTitle, menuItems }) {
             sx={{
               color: "#ffffff",
               ml: "0.4rem",
+              fontSize: "0.875rem",
               mb: "0.5rem",
               "&:hover": { color: colorScheme.primaryOrange },
               textAlign: {

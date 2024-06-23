@@ -17,6 +17,7 @@ function Announcements() {
       <Box sx={{ mt: { xs: "-2.7rem", md: "-2rem" } }}>
         <Swiper
           effect={"creative"}
+          speed={1250}
           autoHeight={true}
           slidesPerView={1}
           autoplay={{

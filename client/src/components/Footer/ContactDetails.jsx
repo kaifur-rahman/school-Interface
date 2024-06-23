@@ -4,7 +4,6 @@ import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import Grid from "@mui/material/Grid";
-import { colorScheme } from "../../constants/colorScheme";
 import { footerContactDetails } from "../../constants/Data/footer";
 
 function ContactDetails() {
@@ -26,14 +25,18 @@ function ContactDetails() {
           >
             <LocationOnRoundedIcon
               sx={{
-                color: colorScheme.primaryOrangeLight,
+                color: "#ffffff",
                 ml: { xs: "0.5rem", md: 0 },
               }}
             ></LocationOnRoundedIcon>
             <Typography
               variant="caption"
               gutterBottom
-              sx={{ color: "#ffffff", ml: { xs: "0.5rem", md: "0" } }}
+              sx={{
+                color: "#ffffff",
+                fontSize: "0.875rem",
+                ml: { xs: "0.5rem", md: "0" },
+              }}
             >
               {footerContactDetails.address}
             </Typography>
@@ -48,13 +51,11 @@ function ContactDetails() {
               justifyContent: "center",
             }}
           >
-            <CallRoundedIcon
-              sx={{ color: colorScheme.primaryOrangeLight }}
-            ></CallRoundedIcon>
+            <CallRoundedIcon sx={{ color: "#ffffff" }}></CallRoundedIcon>
             <Typography
               variant="caption"
               gutterBottom
-              sx={{ color: "#ffffff" }}
+              sx={{ color: "#ffffff", fontSize: "0.875rem" }}
             >
               {footerContactDetails.phone}
             </Typography>
@@ -62,13 +63,11 @@ function ContactDetails() {
         </Grid>
         <Grid item sm={6} md={6}>
           <Box sx={{ display: "flex", direction: "row", mt: "0.3rem" }}>
-            <EmailRoundedIcon
-              sx={{ color: colorScheme.primaryOrangeLight }}
-            ></EmailRoundedIcon>
+            <EmailRoundedIcon sx={{ color: "#ffffff" }}></EmailRoundedIcon>
             <Typography
               variant="caption"
               gutterBottom
-              sx={{ color: "#ffffff", ml: "0.15rem" }}
+              sx={{ color: "#ffffff", ml: "0.15rem", fontSize: "0.875rem" }}
             >
               {footerContactDetails.email}
             </Typography>
